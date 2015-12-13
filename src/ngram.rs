@@ -67,6 +67,6 @@ mod tests {
 
     #[test]
     fn compare_ne_large() {
-        assert!(ngram("alphabet", "alpha", 3) < 1.0);
+        assert!(ngram("alphabet", "alphabte", 3) < 1.0);
     }
 }

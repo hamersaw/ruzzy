@@ -16,12 +16,12 @@ pub fn levenshtein(a: &str, b: &str) -> u16 {
 
         for (j, cb) in b.chars().enumerate() {
             v1[j+1] = std::cmp::min(
-                std::cmp::min(
-                    v1[j] + 1,
-                    v0[j+1] + 1
-                ),
-                v0[j] + if ca == cb { 0 } else { 1 }
-            );
+                    std::cmp::min(
+                        v1[j] + 1,
+                        v0[j+1] + 1
+                    ),
+                    v0[j] + if ca == cb { 0 } else { 1 }
+                );
         }
 
         for j in 0..v0.len() {
@@ -58,6 +58,6 @@ mod tests {
 
     #[test]
     fn compare_ne_large() {
-        assert_eq!(levenshtein("alphabet", "alpha"), 3);
+        assert_eq!(levenshtein("alphabet", "alphabte"), 2);
     }
 }

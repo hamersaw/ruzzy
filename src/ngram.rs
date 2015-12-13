@@ -29,7 +29,7 @@ pub fn compute_ngram_tokens(s: &str, size: usize) -> Vec<String> {
     let mut tokens = Vec::new();
 
     if s.len() < size {
-        tokens.push(format!("{s:>width$}", s=s, width=size));
+        tokens.push(format!("{s:<width$}", s=s, width=size));
     } else {
         for i in 0..(s.len() - size + 1) {
             unsafe {

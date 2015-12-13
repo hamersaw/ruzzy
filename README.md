@@ -7,6 +7,10 @@ Ruzzy is a string fuzzy matching library for rust.
 - damerau_levenshtein
 - levenshtein
 - ngram
+- soundex
 
 ##TODO
-- everything
+- double_metaphone
+- jaro
+- jaro_winkler
+- metaphone

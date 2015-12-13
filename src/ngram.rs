@@ -1,4 +1,4 @@
-pub fn ngram(a: &str, b: &str, size: usize) -> f64 {
+pub fn compare(a: &str, b: &str, size: usize) -> f64 {
     if a == b {
         return 1.0;
     }
@@ -47,26 +47,26 @@ mod tests {
 
     #[test]
     fn compare_empty() {
-        assert_eq!(ngram("", "", 3), 1.0);
+        assert_eq!(compare("", "", 3), 1.0);
     }
 
     #[test]
     fn compare_eq_small() {
-        assert_eq!(ngram("x", "x", 3), 1.0);
+        assert_eq!(compare("x", "x", 3), 1.0);
     }
     
     #[test]
     fn compare_ne_small() {
-        assert!(ngram("x", "y", 3) < 1.0);
+        assert!(compare("x", "y", 3) < 1.0);
     }
 
     #[test]
     fn compare_eq_large() {
-        assert_eq!(ngram("alphabet", "alphabet", 3), 1.0);
+        assert_eq!(compare("alphabet", "alphabet", 3), 1.0);
     }
 
     #[test]
     fn compare_ne_large() {
-        assert!(ngram("alphabet", "alphabte", 3) < 1.0);
+        assert!(compare("alphabet", "alphabte", 3) < 1.0);
     }
 }

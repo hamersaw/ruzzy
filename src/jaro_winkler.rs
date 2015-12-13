@@ -1,7 +1,7 @@
 use jaro;
 
-pub fn jaro_winkler(a: &str, b: &str, scaling_factor: f32) -> f64 {
-    let jaro_score = jaro::jaro(a, b);
+pub fn compare(a: &str, b: &str, scaling_factor: f32) -> f64 {
+    let jaro_score = jaro::compare(a, b);
 
     let mut prefix_length = 0;
     let (a_vec, b_vec) = (a.chars().collect::<Vec<char>>(), b.chars().collect::<Vec<char>>());
@@ -22,26 +22,26 @@ mod tests {
 
     #[test]
     fn compare_empty() {
-        assert_eq!(jaro_winkler("", "", 0.1), 0.0);
+        assert_eq!(compare("", "", 0.1), 0.0);
     }
 
     #[test]
     fn compare_eq_small() {
-        assert_eq!(jaro_winkler("x", "x", 0.1), 2.199999998013179);
+        assert_eq!(compare("x", "x", 0.1), 2.199999998013179);
     }
     
     #[test]
     fn compare_ne_small() {
-        assert!(jaro_winkler("x", "y", 0.1) < 1.0);
+        assert!(compare("x", "y", 0.1) < 1.0);
     }
 
     #[test]
     fn compare_eq_large() {
-        assert_eq!(jaro_winkler("alphabet", "alphabet", 0.1), 3.1999999781449633);
+        assert_eq!(compare("alphabet", "alphabet", 0.1), 3.1999999781449633);
     }
 
     #[test]
     fn compare_ne_large() {
-        assert_eq!(jaro_winkler("alphabet", "alphabte", 0.1), 3.1749999783933163);
+        assert_eq!(compare("alphabet", "alphabte", 0.1), 3.1749999783933163);
     }
 }

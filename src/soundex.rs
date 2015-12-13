@@ -1,8 +1,8 @@
-pub fn soundex(a: &str, b: &str) -> bool {
-    encode_soundex(a) == encode_soundex(b)
+pub fn compare(a: &str, b: &str) -> bool {
+    encode_compare(a) == encode_compare(b)
 }
 
-pub fn encode_soundex(s: &str) -> String {
+pub fn encode_compare(s: &str) -> String {
     if s.len() == 0 {
         return "".to_string();
     }
@@ -38,26 +38,26 @@ mod tests {
 
     #[test]
     fn compare_empty() {
-        assert!(soundex("", ""));
+        assert!(compare("", ""));
     }
 
     #[test]
     fn compare_eq_small() {
-        assert!(soundex("x", "x"));
+        assert!(compare("x", "x"));
     }
     
     #[test]
     fn compare_ne_small() {
-        assert!(!soundex("x", "y"));
+        assert!(!compare("x", "y"));
     }
 
     #[test]
     fn compare_eq_large() {
-        assert!(soundex("alphabet", "alphabet"));
+        assert!(compare("alphabet", "alphabet"));
     }
 
     #[test]
     fn compare_ne_large() {
-        assert!(soundex("alphabet", "alphabte"));
+        assert!(compare("alphabet", "alphabte"));
     }
 }

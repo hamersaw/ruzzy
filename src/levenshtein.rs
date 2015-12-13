@@ -1,6 +1,6 @@
 use std;
 
-pub fn levenshtein(a: &str, b: &str) -> u16 {
+pub fn compare(a: &str, b: &str) -> u16 {
     if a == b {
         return 0;
     } else if a.len() == 0 {
@@ -38,26 +38,26 @@ mod tests {
 
     #[test]
     fn compare_empty() {
-        assert_eq!(levenshtein("", ""), 0);
+        assert_eq!(compare("", ""), 0);
     }
 
     #[test]
     fn compare_eq_small() {
-        assert_eq!(levenshtein("x", "x"), 0);
+        assert_eq!(compare("x", "x"), 0);
     }
     
     #[test]
     fn compare_ne_small() {
-        assert_eq!(levenshtein("x", "y"), 1);
+        assert_eq!(compare("x", "y"), 1);
     }
 
     #[test]
     fn compare_eq_large() {
-        assert_eq!(levenshtein("alphabet", "alphabet"), 0);
+        assert_eq!(compare("alphabet", "alphabet"), 0);
     }
 
     #[test]
     fn compare_ne_large() {
-        assert_eq!(levenshtein("alphabet", "alphabte"), 2);
+        assert_eq!(compare("alphabet", "alphabte"), 2);
     }
 }

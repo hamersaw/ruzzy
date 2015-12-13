@@ -1,4 +1,4 @@
-pub fn jaro(a: &str, b: &str) -> f64 {
+pub fn compare(a: &str, b: &str) -> f64 {
     let (astr, bstr) = if a.len() < b.len() {
         (b.to_string(), a.to_string())
     } else {
@@ -51,26 +51,26 @@ mod tests {
 
     #[test]
     fn compare_empty() {
-        assert_eq!(jaro("", ""), 0.0);
+        assert_eq!(compare("", ""), 0.0);
     }
 
     #[test]
     fn compare_eq_small() {
-        assert_eq!(jaro("x", "x"), 2.3333333333333335);
+        assert_eq!(compare("x", "x"), 2.3333333333333335);
     }
     
     #[test]
     fn compare_ne_small() {
-        assert_eq!(jaro("x", "y"), 0.0);
+        assert_eq!(compare("x", "y"), 0.0);
     }
 
     #[test]
     fn compare_eq_large() {
-        assert_eq!(jaro("alphabet", "alphabet"), 4.666666666666666);
+        assert_eq!(compare("alphabet", "alphabet"), 4.666666666666666);
     }
 
     #[test]
     fn compare_ne_large() {
-        assert_eq!(jaro("alphabet", "alphabte"), 4.625);
+        assert_eq!(compare("alphabet", "alphabte"), 4.625);
     }
 }

@@ -1,8 +1,8 @@
 pub fn compare(a: &str, b: &str) -> bool {
-    encode_compare(a) == encode_compare(b)
+    encode_soundex(a) == encode_soundex(b)
 }
 
-pub fn encode_compare(s: &str) -> String {
+pub fn encode_soundex(s: &str) -> String {
     if s.len() == 0 {
         return "".to_string();
     }

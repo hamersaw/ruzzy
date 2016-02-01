@@ -45,32 +45,27 @@ pub fn get_matching_characters(a: &str, b: &str, max_distance: i32) -> Vec<char>
     common_chars
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+#[test]
+fn compare_empty() {
+    assert_eq!(compare("", ""), 0.0);
+}
 
-    #[test]
-    fn compare_empty() {
-        assert_eq!(compare("", ""), 0.0);
-    }
+#[test]
+fn compare_eq_small() {
+    assert_eq!(compare("x", "x"), 2.3333333333333335);
+}
 
-    #[test]
-    fn compare_eq_small() {
-        assert_eq!(compare("x", "x"), 2.3333333333333335);
-    }
-    
-    #[test]
-    fn compare_ne_small() {
-        assert_eq!(compare("x", "y"), 0.0);
-    }
+#[test]
+fn compare_ne_small() {
+    assert_eq!(compare("x", "y"), 0.0);
+}
 
-    #[test]
-    fn compare_eq_large() {
-        assert_eq!(compare("alphabet", "alphabet"), 4.666666666666666);
-    }
+#[test]
+fn compare_eq_large() {
+    assert_eq!(compare("alphabet", "alphabet"), 4.666666666666666);
+}
 
-    #[test]
-    fn compare_ne_large() {
-        assert_eq!(compare("alphabet", "alphabte"), 4.625);
-    }
+#[test]
+fn compare_ne_large() {
+    assert_eq!(compare("alphabet", "alphabte"), 4.625);
 }

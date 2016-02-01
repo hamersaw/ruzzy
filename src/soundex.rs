@@ -32,32 +32,27 @@ pub fn encode_soundex(s: &str) -> String {
     }
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+#[test]
+fn compare_empty() {
+    assert!(compare("", ""));
+}
 
-    #[test]
-    fn compare_empty() {
-        assert!(compare("", ""));
-    }
+#[test]
+fn compare_eq_small() {
+    assert!(compare("x", "x"));
+}
 
-    #[test]
-    fn compare_eq_small() {
-        assert!(compare("x", "x"));
-    }
-    
-    #[test]
-    fn compare_ne_small() {
-        assert!(!compare("x", "y"));
-    }
+#[test]
+fn compare_ne_small() {
+    assert!(!compare("x", "y"));
+}
 
-    #[test]
-    fn compare_eq_large() {
-        assert!(compare("alphabet", "alphabet"));
-    }
+#[test]
+fn compare_eq_large() {
+    assert!(compare("alphabet", "alphabet"));
+}
 
-    #[test]
-    fn compare_ne_large() {
-        assert!(compare("alphabet", "alphabte"));
-    }
+#[test]
+fn compare_ne_large() {
+    assert!(compare("alphabet", "alphabte"));
 }

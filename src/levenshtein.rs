@@ -32,32 +32,27 @@ pub fn compare(a: &str, b: &str) -> u16 {
     v1[b.len()]
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+#[test]
+fn compare_empty() {
+    assert_eq!(compare("", ""), 0);
+}
 
-    #[test]
-    fn compare_empty() {
-        assert_eq!(compare("", ""), 0);
-    }
+#[test]
+fn compare_eq_small() {
+    assert_eq!(compare("x", "x"), 0);
+}
 
-    #[test]
-    fn compare_eq_small() {
-        assert_eq!(compare("x", "x"), 0);
-    }
-    
-    #[test]
-    fn compare_ne_small() {
-        assert_eq!(compare("x", "y"), 1);
-    }
+#[test]
+fn compare_ne_small() {
+    assert_eq!(compare("x", "y"), 1);
+}
 
-    #[test]
-    fn compare_eq_large() {
-        assert_eq!(compare("alphabet", "alphabet"), 0);
-    }
+#[test]
+fn compare_eq_large() {
+    assert_eq!(compare("alphabet", "alphabet"), 0);
+}
 
-    #[test]
-    fn compare_ne_large() {
-        assert_eq!(compare("alphabet", "alphabte"), 2);
-    }
+#[test]
+fn compare_ne_large() {
+    assert_eq!(compare("alphabet", "alphabte"), 2);
 }

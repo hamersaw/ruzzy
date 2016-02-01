@@ -41,32 +41,27 @@ pub fn compute_ngram_tokens(s: &str, size: usize) -> Vec<String> {
     tokens
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+#[test]
+fn compare_empty() {
+    assert_eq!(compare("", "", 3), 1.0);
+}
 
-    #[test]
-    fn compare_empty() {
-        assert_eq!(compare("", "", 3), 1.0);
-    }
+#[test]
+fn compare_eq_small() {
+    assert_eq!(compare("x", "x", 3), 1.0);
+}
 
-    #[test]
-    fn compare_eq_small() {
-        assert_eq!(compare("x", "x", 3), 1.0);
-    }
-    
-    #[test]
-    fn compare_ne_small() {
-        assert!(compare("x", "y", 3) < 1.0);
-    }
+#[test]
+fn compare_ne_small() {
+    assert!(compare("x", "y", 3) < 1.0);
+}
 
-    #[test]
-    fn compare_eq_large() {
-        assert_eq!(compare("alphabet", "alphabet", 3), 1.0);
-    }
+#[test]
+fn compare_eq_large() {
+    assert_eq!(compare("alphabet", "alphabet", 3), 1.0);
+}
 
-    #[test]
-    fn compare_ne_large() {
-        assert!(compare("alphabet", "alphabte", 3) < 1.0);
-    }
+#[test]
+fn compare_ne_large() {
+    assert!(compare("alphabet", "alphabte", 3) < 1.0);
 }
